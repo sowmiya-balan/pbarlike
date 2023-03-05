@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pbarlike"
+version = "1.0.0"
+authors = [
+  { name="Sowmiya Balan", email="sowmiya.balan@kit.edu" },
+]
+description = "Python package to calculate likelihoods to constrain Dark Matter annihliation using AMS-02 antiproton data"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+  "numpy",
+  "tensorflow",
+  "iminuit<2",
+  "h5py"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/sowmiya-balan/AMS02antiprotonLikelihood"
