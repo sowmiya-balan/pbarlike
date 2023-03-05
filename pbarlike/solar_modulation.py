@@ -79,15 +79,13 @@ class ForceFieldApprox:
                 chi2_temp = chi2(phi_pred)
                 return chi2_temp
         
-            profiling = Minuit.from_array_func(fcn   = lsq ,
-                                                start = np.array([0.6]), 
-                                                error = np.array([0.001]), 
-                                                limit = np.array([[0.2, 0.9]]), 
-                                                errordef=1) 
-            
+            profiling = Minuit(fcn   = lsq ,
+                                V = 0.6,) 
+            profiling.errors = 0.001
+            profiling.limits = (0.2, 0.9)
+            profiling.errordef = Minuit.LEAST_SQUARES
             profiling.migrad()
-            # V_profiled,A-profiled - values of estimated parameters
-            V_profiled = profiling.np_values()
+            V_profiled = profiling.values
             return self.solar_mod(phi_LIS, V_profiled)
         return profiling
 

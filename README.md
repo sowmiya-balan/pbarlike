@@ -1,4 +1,4 @@
-PBARLIKE
+pbarlike
 ========
 
 [![made-with-python](https://img.shields.io/badge/Version-1.0.0-1f425f.svg)](docs/build/html/index.html)
@@ -14,26 +14,26 @@ are crucial for global fits.
 
 **DarkRayNet**[2] (DRN), a deep neural network provides significant speed up in predicting propagation of CR nuclei. 
 **GAMBIT** [3] is an open-source, global fitting framework developed for global fits in Beyond-the-Standard-Model Physics. The code 
-**PBARLIKE** [4] is an addition to this family of numerical codes, developed for performing convenient and computationally efficient analyses 
+**pbarlike** [4] is an addition to this family of numerical codes, developed for performing convenient and computationally efficient analyses 
 for DM searches with antiprotons. 
 
-The code PBARLIKE obtains antiproton flux predictions from DRN, and calculates likelihoods using the recent AMS-02 data. The likelihood is
+The code pbarlike obtains antiproton flux predictions from DRN, and calculates likelihoods using the recent AMS-02 data. The likelihood is
 marginalized over the nuisance parameters from propagation and solar modulation. It also involves state-of-the-art
-treatment of correlations in data. Most importantly, PBARLIKE includes the gambit_interface module that
+treatment of correlations in data. Most importantly, pbarlike includes the gambit_interface module that
 allows access from within GAMBIT to fast AMS-02 antiproton likelihood calculation using DRN.
 
 Citations
 =========
 
-Please cite arXiv:23xx.xxxxx and ..?
+Please cite arXiv:23xx.xxxxx
 
 Installation
 ============
 
-Clone PBARLIKE repository, navigate to PBARLIKE directory, and finally install package using pip (Tip: Install in a new virtual environment to avoid package reinstallations and subsequent dependency issues in current environment) :
+Clone pbarlike repository, navigate to pbarlike directory, and finally install package using pip (Tip: Install in a new virtual environment to avoid package reinstallations and subsequent dependency issues in current environment) :
 
 ```
-$ git clone https://github.com/sowmiya-balan/AMS02antiprotonLikelihood.git pbarlike
+$ git clone https://github.com/sowmiya-balan/pbarlike.git pbarlike
 $ cd pbarlike
 $ pip install .
 ```
@@ -42,7 +42,7 @@ Usage
 
 [tests.py](tests.py) serves as an example. 
 
-After installation, PBARLIKE and it's modules can be easily imported and used from anywhere within python:
+After installation, pbarlike and it's modules can be easily imported and used from anywhere within python:
 
 ```
 >>> from pbarlike import data, drn_interface, loglike_recipe
@@ -65,7 +65,7 @@ Once parameters are set, likelihood can be obtained using `loglike_recipe` funct
 {'uncorrelated': [37.49072920457054], 'correlated': [25.399892554001752]}
 ```
 
-For complete documentation, refer to [pbarlike read-the-docs](docs/build/html/index.html)
+For complete documentation, refer to [docs](https://pbarlike.readthedocs.io/en/latest/)
 
 References:
 -----------

@@ -14,7 +14,7 @@ requires-python = ">=3.7"
 dependencies = [
   "numpy",
   "tensorflow",
-  "iminuit<2",
+  "iminuit",
   "h5py"
 ]
 
