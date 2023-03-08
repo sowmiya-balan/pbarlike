@@ -109,8 +109,11 @@ class ForceFieldApprox:
         """
         Calculates primary and secondary antiproton flux after solar modulation according to the force field approximation.
         """
-        phi_LIS = self.phi_CR_LIS + phi_DM_LIS
-        if self.verbose: print('\n phi_LIS: ',phi_LIS)
-        phi_DMCR = np.array([self.solmod_options[errors](phi_LIS[i]) for i in range(len(phi_LIS))])
-        if self.verbose: print('\n Flux after solar modulation, phi_DMCR: ',phi_DMCR)
+        if phi_DM_LIS is None:
+            phi_DMCR = None
+        else:
+            phi_LIS = self.phi_CR_LIS + phi_DM_LIS
+            if self.verbose: print('\n phi_LIS: ',phi_LIS)
+            phi_DMCR = np.array([self.solmod_options[errors](phi_LIS[i]) for i in range(len(phi_LIS))])
+            if self.verbose: print('\n Flux after solar modulation, phi_DMCR: ',phi_DMCR)
         return phi_DMCR

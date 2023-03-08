@@ -32,7 +32,7 @@ class DRNet:
     DM mass, branching fractions) as required by DMNet (simulates primary antiproton flux) and sNet 
     (simulates secondary antiproton flux) and methods that postprocess network ouputs to user usable forms.
     """
-    def __init__(self,propagation_config,propagation_parameters,prevent_extrapolation=True,verbose=False):
+    def __init__(self,propagation_config,propagation_parameters,prevent_extrapolation,verbose=False):
         """
         Arguments: 
             propagation_config (object): Object of class :ref:`Propagation <propagation>`
@@ -155,17 +155,13 @@ class DRNet:
             self.bf = np.repeat(bf_r,len(self.DM_mass),axis=0)
         
         # Preventing extrapolation
-        self.stop_sim = False
-        stop_DM = False
+        self.stop_DM = False
         if np.min(self.DM_mass) < 5 or np.max(self.DM_mass) > 5e3:
             print('\n At least one of the given DM masses is outside of the provided range (5 GeV to 5 TeV). DM antiproton flux cannot be predicted.')
-            stop_DM = True
+            self.stop_DM = True
         if np.min(bf) < 1e-5 or np.max(bf) > 1 :
             print('Given branching fractions: ', bf)
             print('\n The given branching fractions were not in the range of trained parameters or not normalized to one. Values below 1e-5 were mapped to 1e-5 and the remaining fractions normalized accordingly.')
-            stop_DM = True 
-        if stop_DM:
-            self.stop_sim = True
             
         # Preparing thermally averaged annihilation cross-section (sigma_v)
         if type(sigma_v) == float or type(sigma_v)== np.float64 or type(sigma_v) == np.int64:
@@ -239,8 +235,7 @@ class DRNet:
         """
         Simulates primary and secondary antiproton fluxes at the local interstellar region using DMNet and sNet respectively.
         """
-        if self.stop_sim :
-            print('\n The DM antiproton flux cannot be predicted by DRN due to atleast one parameter outside the region in which the network is trained.')
+        if self.stop_DM :
             phi_DM_LIS = None
         else:
             DRN_output = self.DM_sim()

@@ -32,15 +32,15 @@ dependencies
         7             s_D                      Smoothening parameter for low-rigidity break in diffusion coefficient	
         8             R_D,1                    Value of high rigidity at which break occurs in diffusion coefficient	
         9             v_0,c                    Constant convection velocity	
-        10            A_XS,3He                 Nuisance parameter for 3He production	
-        11            delta_XS3He              Nuisance parameter for 3He production	
+        10            A_XS,3He                 Overall normalization of fragmentation cross-section for 3He production	
+        11            delta_XS3He              Low-energy slope of fragmentation cross-section for 3He production	
         12            V_p                      Solar modulation potential	for p
         13            V_pbar-V_p               V_pbar: Solar modulation	potential for pbar
         14            A_p                      Overall normalization for p
         15            Abd_He                   Helium 4 isotopic abundance
         ============  =======================  ======================================	
 
-        INJ.BRK+vA:
+        INJ.BRK:
 
         ============  =======================  ======================================  
         Column no.    DRN parameter name       Description
@@ -57,10 +57,10 @@ dependencies
         9             R_1,D                    Value of rigidity at which break occurs in diffusion coefficient
         10            v_0                      Constant convection velocity
         11            v_A                      Alfven velocity
-        12            A_XS,3He                 Nuisance parameter for 3He production
-        13            delta_XS3He              Nuisance parameter for 3He production
+        12            A_XS,3He                 Overall normalization of fragmentation cross-section for 3He production
+        13            delta_XS3He              Low-energy slope of fragmentation cross-section for 3He production
         14            V_p                      Solar modulation potential for p
         15            V_pbar-V_p               V_pbar: Solar modulation	potential for pbar
-        16            A_p                      Overall normalization
+        16            A_p                      Overall normalization for p
         17            Abd_He                   Helium 4 isotopic abundance
         ============  =======================  ======================================

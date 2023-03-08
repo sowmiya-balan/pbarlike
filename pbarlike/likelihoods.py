@@ -72,12 +72,16 @@ class LogLikeRatios:
         using the only uncorrelated errors.
         """
         del_chi2 = []
-        for i in range(len(phi_DMCR)):
-            chi2_DMCR = self.chi2_uncorr(phi_DMCR[i])
-            if self.verbose: print('\n Uncorrelated chi2 for DMCR: ',chi2_DMCR)
-            chi2_diff = np.clip(self.chi2_CR_uncorr - chi2_DMCR,  -500,500)
-            del_chi2_t = -2*np.log( 1/len(self.pp_ur) * np.sum(np.exp(chi2_diff/2),axis=-1) )
-            del_chi2.append(del_chi2_t)
+        if phi_DMCR is None:
+            print("The given DM mass is outside the DRN trained region, returning zero log-likelihood.")
+            del_chi2 = [0]
+        else:
+            for i in range(len(phi_DMCR)):
+                chi2_DMCR = self.chi2_uncorr(phi_DMCR[i])
+                if self.verbose: print('\n Uncorrelated chi2 for DMCR: ',chi2_DMCR)
+                chi2_diff = np.clip(self.chi2_CR_uncorr - chi2_DMCR,  -500,500)
+                del_chi2_t = -2*np.log( 1/len(self.pp_ur) * np.sum(np.exp(chi2_diff/2),axis=-1) )
+                del_chi2.append(del_chi2_t)
         return del_chi2
 
     def del_chi2_corr(self, phi_DMCR):
@@ -86,12 +90,16 @@ class LogLikeRatios:
         using the total covariance matrix including correlated and uncorrelated errors.
         """
         delta_chi2_cov = []
-        for i in range(len(phi_DMCR)):
-            chi2_DMCR = self.chi2_corr(phi_DMCR[i])
-            if self.verbose: print('\n Correlated chi2 for DMCR: ',chi2_DMCR)
-            chi2_DM_diff = np.clip(self.chi2_CR_uncorr - chi2_DMCR,  -500,500)
-            delta_chi2_t = -2*np.log(np.sum(np.exp(chi2_DM_diff/2),axis=-1) / self.CR_marginalized_likelihood)
-            delta_chi2_cov.append(delta_chi2_t)
+        if phi_DMCR is None:
+            print("The given DM mass is outside the DRN trained region, returning zero log-likelihood.")
+            delta_chi2_cov = [0]
+        else:
+            for i in range(len(phi_DMCR)):
+                chi2_DMCR = self.chi2_corr(phi_DMCR[i])
+                if self.verbose: print('\n Correlated chi2 for DMCR: ',chi2_DMCR)
+                chi2_DM_diff = np.clip(self.chi2_CR_uncorr - chi2_DMCR,  -500,500)
+                delta_chi2_t = -2*np.log(np.sum(np.exp(chi2_DM_diff/2),axis=-1) / self.CR_marginalized_likelihood)
+                delta_chi2_cov.append(delta_chi2_t)
         return delta_chi2_cov
 
 
