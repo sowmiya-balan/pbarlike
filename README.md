@@ -25,7 +25,7 @@ allows access from within GAMBIT to fast AMS-02 antiproton likelihood calculatio
 Citations
 =========
 
-Please cite arXiv:23xx.xxxxx
+Please cite [4]
 
 Installation
 ============
@@ -76,6 +76,6 @@ References:
 
 [3] GAMBIT Collaboration, P. Athron et al., [GAMBIT: The Global and Modular Beyond-the-Standard-Model Inference Tool](https://link.springer.com/article/10.1140/epjc/s10052-017-5321-8), Eur. Phys. J. C 77 (2017), no. 11 784, [[1705.07908]](https://arxiv.org/abs/1705.07908). [Addendum: Eur.Phys.J.C 78, 98 (2018)].
 
-[4] Add reference.
+[4] S. Balan, F. Kahlhoefer, M. Korsmeier, S. Manconi, and K. Nippel, [Fast and accurate AMS-02 antiproton likelihoods for global dark matter fits](https://iopscience.iop.org/article/10.1088/1475-7516/2023/08/052), JCAP 08 (2023) 052, [[2303.07362]](https://arxiv.org/abs/2303.07362).
 
 [5] J. Heisig, M. Korsmeier, and M. W. Winkler, [Dark matter or correlated errors: Systematics of the AMS-02 antiproton excess](https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.043017), Phys. Rev. Res. 2 (2020), no. 4 043017, [[2005.04237]](https://arxiv.org/abs/2005.04237).
